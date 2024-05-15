@@ -1,0 +1,20 @@
+.main-container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+.nav-wrapper {
+    flex: 0 1 auto;
+}
+.container {
+    display: flex;
+    flex: 1;
+}
+.left {
+    padding: 1.5rem 1rem 1.5rem 1rem;
+    flex: 1; 
+}
+.right {
+    padding: 1.5rem 1rem 1.5rem 1rem;
+    flex: 1; 
+}

@@ -1,8 +1,10 @@
 import '../../styles/components/Card.css';
 import studentimg from '../../assets/student.jpg';
 import hrimg from '../../assets/HR.jpg';
+import { useNavigate } from 'react-router-dom';
 
 const Card = (props) => {
+    const navigate = useNavigate();
     const map = {
         student : studentimg,
         hr : hrimg
@@ -11,6 +13,10 @@ const Card = (props) => {
     const style = { 
         backgroundImage: `url(${imgurl})`,
     };
+    const handleClick = () => {
+        console.log('clicked');
+        navigate(props.path);
+    }
     return ( 
         <div className="card">
             <div className='temp'>
@@ -18,7 +24,7 @@ const Card = (props) => {
                 <img className='card-img' src={`${imgurl}`} />
             </div>
             <div className="button-wrapper">
-                <button className='card-button'>{props.buttonName}</button>
+                <button onClick={handleClick} className='card-button'>{props.buttonName}</button>
             </div>
         </div>
      );

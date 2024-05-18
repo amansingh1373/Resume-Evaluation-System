@@ -4,10 +4,10 @@ const SelectionCards = () => {
     return (
     <div className='container'>
         <div className='left'>
-        <Card imageName='student' buttonName='Student' />
+            <Card imageName='student' buttonName='Student' path='/student' />
         </div>
         <div className='right'>
-        <Card imageName='hr' buttonName='HR' />
+            <Card imageName='hr' buttonName='HR' path='/hr'/>
         </div>
     </div>
     );

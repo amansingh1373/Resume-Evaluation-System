@@ -5,6 +5,7 @@ import './index.css'
 import SelectionCards from './pages/selection.jsx'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Student from './pages/student.jsx'
+import Hr from './pages/hr.jsx'
 
 const router = createBrowserRouter([
         {
@@ -21,7 +22,7 @@ const router = createBrowserRouter([
                 },
                 {
                     path:"hr",
-                    element: <App />,
+                    element: <Hr />,
                 }
             ]
         },

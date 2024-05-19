@@ -2,15 +2,15 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1.5rem 1rem 1.5rem 1rem;
+    padding: 1rem 0.8em 1rem 0.8rem;
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
 }
 
 .nav-bar-title {
     font-family: "Inria Sans", sans-serif;
-    font-weight: bold;
+    font-weight: 400;
     font-style: normal;
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     color : #2C3E50;
 }
 
@@ -29,5 +29,5 @@
     border: 2px solid #2C3E50;
     border-radius: 50%;
     padding: 0.5rem;
-    font-size: 1.7rem;
+    font-size: 1.4rem;
 }

@@ -1,22 +1,32 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import '../styles/pages/student.css';
+import { useNavigate } from 'react-router-dom';
 
 const Student = () => {
     const [resumeValue, setResumeValue] = useState('');
     const [jobDescValue, setJobDescValue] = useState('');
+    const [files, setFiles] = useState('');
+    const [resumeFile, setResumeFile] = useState('');
+    const [jobDescFile, setJobDescFile] = useState('');
+    const navigate = useNavigate();
 
     function handleChangeResume(e) {
         setResumeValue(e.target.files[0].name);
+        setResumeFile(e.target.files);
     }
     function handleChangeJobDesc(e) {
         setJobDescValue(e.target.files[0].name);
+        setJobDescFile(e.target.files);
     }
     
     const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log(e);
         if(resumeValue === '' || jobDescValue === '') {
             alert('Please upload both files');
         } else {
-            alert('Files uploaded successfully');
+            setFiles({resume: resumeFile, jobDesc: jobDescFile});
+            navigate('result', {state: {files: files}});
         }
     }
 

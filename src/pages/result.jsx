@@ -9,8 +9,14 @@ const Result = () => {
     const [score, setScore] = useState(0);
     const [loading, setLoading] = useState(false);
     useEffect( () => {
+        const formData = new FormData();
+        formData.append('file1', files.resume);
+        formData.append('file2', files.jobDesc);
         setLoading(true);
-        fetch("http://localhost:3000")
+        fetch("http://localhost:3000/",{
+            method: 'POST',
+            body: formData,
+        })
         .then((response) => response.text())
         .then((data) => {
             setScore(data)

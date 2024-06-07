@@ -1,22 +1,26 @@
 import { useEffect, useState } from 'react';
 import '../styles/pages/hr.css';
+import { useNavigate } from 'react-router-dom';
 
 const Hr = () => {
     const [resumeValue, setResumeValue] = useState('');
     const [jobDescValue, setJobDescValue] = useState('');
+    const [files, setFiles] = useState();
+    const navigate = useNavigate();
     
     function handleChangeResume(e) {
         setResumeValue(e.target.files);
     }
     function handleChangeJobDesc(e) {
-        setJobDescValue(e.target.files[0].name);
+        setJobDescValue(e.target.files[0]);
     }
     
     const handleSubmit = (e) => {
+        e.preventDefault();
         if(resumeValue === '' || jobDescValue === '') {
             alert('Please upload both files');
         } else {
-            alert('Files uploaded successfully');
+            setFiles({resume: resumeValue, jobDesc: jobDescValue});
         }
     }
     const createPreviewUi = (files) => {
@@ -30,6 +34,12 @@ const Hr = () => {
             </ul>
         );
     }
+
+    useEffect( () => {
+        if(files)
+            navigate('result', {state: {files: files}});
+    }, [files,navigate]);
+
     return ( 
         <form className='student-container'  onSubmit={handleSubmit}>
             <div className='student-container'>
@@ -51,7 +61,7 @@ const Hr = () => {
                         </label>
                         <input id="job-desc-upload-btn" name="job-desc-upload-btn" className='input-file' type='file' accept='.pdf' onChange={handleChangeJobDesc}/>
                         <div className='preview-job-desc'>
-                            {jobDescValue ? jobDescValue : 'No Job Description uploaded yet'}
+                            {jobDescValue ? jobDescValue.name : 'No Job Description uploaded yet'}
                         </div>
                     </div>
                 </div>

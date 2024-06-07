@@ -14,10 +14,24 @@
     color : #2C3E50;
 }
 
+.check-button1 {
+    border: none;
+    padding: 1rem 1.5rem 1rem 1.5rem;
+    background-color: #28A745;
+    color: white;
+    font-size: 1rem;
+    border-radius: 10px;
+}
+
+.login-register-button {
+    margin-top: 1rem;
+}
+
 .nav-bar-menu {
     display: flex;
     justify-content: space-evenly;
-    flex-basis: 15%;
+    align-items: center;
+    flex-basis: 25%;
 }
 
 .nav-bar-menu a{

@@ -1,34 +1,37 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import '../styles/pages/student.css';
 import { useNavigate } from 'react-router-dom';
 
 const Student = () => {
     const [resumeValue, setResumeValue] = useState('');
     const [jobDescValue, setJobDescValue] = useState('');
-    const [files, setFiles] = useState('');
+    const [files, setFiles] = useState();
     const [resumeFile, setResumeFile] = useState('');
     const [jobDescFile, setJobDescFile] = useState('');
     const navigate = useNavigate();
 
     function handleChangeResume(e) {
         setResumeValue(e.target.files[0].name);
-        setResumeFile(e.target.files);
+        setResumeFile(e.target.files[0]);
     }
     function handleChangeJobDesc(e) {
         setJobDescValue(e.target.files[0].name);
-        setJobDescFile(e.target.files);
+        setJobDescFile(e.target.files[0]);
     }
     
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(e);
         if(resumeValue === '' || jobDescValue === '') {
             alert('Please upload both files');
         } else {
             setFiles({resume: resumeFile, jobDesc: jobDescFile});
-            navigate('result', {state: {files: files}});
         }
     }
+
+    useEffect( () => {
+        if(files)
+            navigate('result', {state: {files: files}});
+    }, [files,navigate]);
 
     return ( 
         <form className='student-container'  onSubmit={handleSubmit}>

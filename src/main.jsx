@@ -33,15 +33,23 @@ const router = createBrowserRouter([
                 },
                 {
                     path:"hr",
-                    element: <Hr />,
+                    element: <Outlet />,
+                    children: [
+                        {
+                            path:"",
+                            element: <Hr />
+                        },
+                        {
+                            path:"result",
+                            element: <Result />
+                        }
+                    ]
                 }
             ]
         },
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-    <React.StrictMode>
-        <RouterProvider router={router} />
-    </React.StrictMode>,
+    <RouterProvider router={router} />,
 )
 
